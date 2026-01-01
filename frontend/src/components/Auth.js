@@ -7,7 +7,7 @@ const Auth = ({ onLogin, onRegister, error }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!isLogin && password !== confirmPassword) {
@@ -15,31 +15,21 @@ const Auth = ({ onLogin, onRegister, error }) => {
       return;
     }
     
+    const form = e.target;
+    
     if (isLogin) {
       onLogin(email, password);
-      
-      // Prompt browser to save credentials
-      if (window.PasswordCredential) {
-        const cred = new window.PasswordCredential({
-          id: email,
-          password: password,
-          name: email
-        });
-        navigator.credentials.store(cred);
-      }
     } else {
       onRegister(email, password);
-      
-      // Prompt browser to save credentials
-      if (window.PasswordCredential) {
-        const cred = new window.PasswordCredential({
-          id: email,
-          password: password,
-          name: email
-        });
-        navigator.credentials.store(cred);
-      }
     }
+    
+    // Give browser a moment to detect successful login
+    setTimeout(() => {
+      if (window.PasswordCredential) {
+        const cred = new window.PasswordCredential(form);
+        navigator.credentials.store(cred).catch(() => {});
+      }
+    }, 100);
   };
 
   return (
@@ -52,7 +42,7 @@ const Auth = ({ onLogin, onRegister, error }) => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit} className="auth-form" action="" method="post">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
             <input
@@ -62,7 +52,7 @@ const Auth = ({ onLogin, onRegister, error }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your.email@example.com"
-              autoComplete="username email"
+              autoComplete="username"
               required
               autoFocus
             />
