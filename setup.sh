@@ -2,6 +2,13 @@
 
 set -e
 
+# Check if running on Windows (Git Bash/MSYS/Cygwin)
+if [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "win32" ]] || [[ "$OSTYPE" == "cygwin" ]]; then
+    echo "Detected Windows environment. Launching PowerShell script..."
+    powershell.exe -ExecutionPolicy Bypass -File "./setup.ps1"
+    exit $?
+fi
+
 echo "============================================"
 echo "   Password Manager - Setup Script"
 echo "============================================"
