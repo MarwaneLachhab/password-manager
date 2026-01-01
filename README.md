@@ -50,9 +50,17 @@ If any tools are missing, the script will offer to install them automatically us
    ```
 
 2. **Run setup script**
-   ```powershell
-   .\setup.ps1
+   
+   **Git Bash / Linux / Mac:**
+   ```bash
+   ./setup.sh
    ```
+   
+   **Windows CMD / PowerShell:**
+   ```cmd
+   setup
+   ```
+   
    This will:
    - Install all dependencies
    - Build the backend
@@ -60,9 +68,17 @@ If any tools are missing, the script will offer to install them automatically us
    - Prepare the application for launch
 
 3. **Start the application**
-   ```powershell
-   .\start.ps1
+   
+   **Git Bash / Linux / Mac:**
+   ```bash
+   ./start.sh
    ```
+   
+   **Windows CMD / PowerShell:**
+   ```cmd
+   start
+   ```
+   
    This will start both backend and frontend servers.
 
 ### Manual Installation (Alternative)
@@ -200,12 +216,12 @@ Build files created in: `frontend/build/`
 
 ## 📋 Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `.\setup.ps1` | Check and install dependencies, build project |
-| `.\start.ps1` | Start both backend and frontend |
-| `.\start-backend.ps1` | Start backend server only |
-| `.\start-frontend.ps1` | Start frontend server only |
+| Command | Git Bash/Linux/Mac | Windows CMD/PowerShell | Description |
+|---------|-------------------|------------------------|-------------|
+| Setup | `./setup.sh` | `setup` | Check and install dependencies, build project |
+| Start All | `./start.sh` | `start` | Start both backend and frontend |
+| Backend | `./start-backend.sh` | `start-backend` | Start backend server only |
+| Frontend | `./start-frontend.sh` | `start-frontend` | Start frontend server only |
 
 ## 🌐 API Endpoints
 
