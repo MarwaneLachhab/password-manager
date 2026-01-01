@@ -17,8 +17,28 @@ const Auth = ({ onLogin, onRegister, error }) => {
     
     if (isLogin) {
       onLogin(email, password);
+      
+      // Prompt browser to save credentials
+      if (window.PasswordCredential) {
+        const cred = new window.PasswordCredential({
+          id: email,
+          password: password,
+          name: email
+        });
+        navigator.credentials.store(cred);
+      }
     } else {
       onRegister(email, password);
+      
+      // Prompt browser to save credentials
+      if (window.PasswordCredential) {
+        const cred = new window.PasswordCredential({
+          id: email,
+          password: password,
+          name: email
+        });
+        navigator.credentials.store(cred);
+      }
     }
   };
 
