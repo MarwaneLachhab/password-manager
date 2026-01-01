@@ -53,6 +53,7 @@ const PasswordForm = ({ password, onSubmit, onCancel }) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
+            autoComplete="off"
             required
             placeholder="e.g., Gmail, Facebook"
           />
@@ -66,6 +67,7 @@ const PasswordForm = ({ password, onSubmit, onCancel }) => {
             name="username"
             value={formData.username}
             onChange={handleChange}
+            autoComplete="off"
             required
             placeholder="Email or username"
           />
@@ -80,6 +82,7 @@ const PasswordForm = ({ password, onSubmit, onCancel }) => {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              autoComplete="off"
               required
               placeholder="Enter password"
             />
@@ -97,6 +100,7 @@ const PasswordForm = ({ password, onSubmit, onCancel }) => {
             name="url"
             value={formData.url}
             onChange={handleChange}
+            autoComplete="off"
             placeholder="https://example.com"
           />
         </div>

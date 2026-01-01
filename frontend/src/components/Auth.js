@@ -38,9 +38,11 @@ const Auth = ({ onLogin, onRegister, error }) => {
             <input
               type="email"
               id="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your.email@example.com"
+              autoComplete="username email"
               required
               autoFocus
             />
@@ -51,9 +53,11 @@ const Auth = ({ onLogin, onRegister, error }) => {
             <input
               type="password"
               id="password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your master password"
+              autoComplete={isLogin ? "current-password" : "new-password"}
               required
               minLength="6"
             />
@@ -65,9 +69,11 @@ const Auth = ({ onLogin, onRegister, error }) => {
               <input
                 type="password"
                 id="confirmPassword"
+                name="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Re-enter your password"
+                autoComplete="new-password"
                 required
                 minLength="6"
               />
